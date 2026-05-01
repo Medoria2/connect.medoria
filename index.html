@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!--
+    If you are serving your web app in a path other than the root, change the
+    href value below to reflect the base path you are serving from.
+
+    The path provided below has to start and end with a slash "/" in order for
+    it to work correctly.
+
+    For more details:
+    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
+
+    This is a placeholder for base href that will be replaced by the value of
+    the `--base-href` argument provided to `flutter build`.
+  -->
+  <base href="/">
+
+  <meta charset="UTF-8">
+  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
+  <meta name="description" content="Сервис онлайн-консультаций с врачами">
+
+  <!-- iOS meta tags & icons -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Медориа Здоровье">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />
+
+  <title>Медориа Здоровье</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="loading.css">
+  <style>
+    .loading_hidden {
+      display: none;
+    }
+  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="application/javascript" src="/assets/packages/flutter_inappwebview_web/assets/web/web_support.js"
+    defer></script>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function (m, e, t, r, i, k, a) {
+      m[i] = m[i] || function () { (m[i].a = m[i].a || []).push(arguments) };
+      m[i].l = 1 * new Date();
+      for (var j = 0; j < document.scripts.length; j++) { if (document.scripts[j].src === r) { return; } }
+      k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+    })(window, document, 'script', 'https://mc.yandex.ru/metrika/tag.js?id=108260723', 'ym');
+
+    ym(108260723, 'init', { ssr: true, webvisor: true, clickmap: true, ecommerce: "dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce: true, trackLinks: true });
+  </script>
+  <noscript>
+    <div><img src="https://mc.yandex.ru/watch/108260723" style="position:absolute; left:-9999px;" alt="" /></div>
+  </noscript>
+  <!-- /Yandex.Metrika counter -->
+</head>
+
+<body>
+  <div class="loading_default loading_default_block_img">
+    <div class="loading_default_img_back">
+      <div class="loading_default_img_logo_scale">
+        <div class="loading_default_img_logo" style="background-image:url('/icons/Icon-192.png');"></div>
+      </div>
+    </div>
+    <!-- <div class="loading_default_block_title_footer_img">Пожалуйста, подождите...</div> -->
+  </div>
+  <script>
+    function lcp_loading_default(param) {
+      if (typeof param === 'undefined') {
+        param = {};
+      }
+      var loading_show = param['loading_show'];
+      if (loading_show === 'true') {
+        lcp_loading_default_show();
+      } else {
+        lcp_loading_default_hidden();
+      }
+    }
+
+    function lcp_loading_default_show() {
+      document.body.classList.add('body_scroll_loading');
+      document.querySelector('.loading_default')?.classList.remove('loading_hidden');
+    }
+
+    function lcp_loading_default_hidden() {
+      document.body.classList.remove('body_scroll_loading');
+      document.querySelector('.loading_default')?.classList.add('loading_hidden');
+    }
+  </script>
+  <script>
+    lcp_loading_default({ 'loading_show': 'true' });
+
+    const observer = new MutationObserver((mutationsList, observer) => {
+      const canvas = document.querySelector('flt-glass-pane') || document.querySelector('canvas');
+      if (canvas) {
+        lcp_loading_default({ 'loading_show': 'false' });
+        observer.disconnect();
+      }
+    });
+
+    observer.observe(document.body, { childList: true, subtree: true });
+  </script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/firebase-messaging-sw.js')
+        .then(function (registration) {
+          console.log('Service Worker registration successful with scope: ', registration.scope);
+        }).catch(function (err) {
+          console.log('Service Worker registration failed: ', err);
+        });
+    }
+  </script>
+  <script src="flutter_bootstrap.js" async></script>
+</body>
+
+</html>

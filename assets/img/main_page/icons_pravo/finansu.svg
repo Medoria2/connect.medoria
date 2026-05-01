@@ -1,0 +1,6 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="4" width="24" height="24" rx="3" fill="#F0E6FF" stroke="#8E54E9" stroke-width="1"/>
+  <!-- Буква "Р" рубля -->
+  <path d="M14 12V20M14 12H17C18.1046 12 19 12.8954 19 14C19 15.1046 18.1046 16 17 16H14" stroke="#8E54E9" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 16H20" stroke="#8E54E9" stroke-width="2" stroke-linecap="round"/>
+</svg>
