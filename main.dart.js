@@ -119944,7 +119944,7 @@ l.toString
 s=t.w
 r=A.q("\u041e\u043d\u043b\u0430\u0439\u043d \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u0438 \u0443 \u0432\u0440\u0430\u0447\u0435\u0439 24/7",m,m,m,m,A.B(m,m,m,m,m,m,m,m,m,m,m,A.aB(l,m,s).w.a.a>1100?47:32,m,m,B.L,m,m,!0,m,m,m,m,m,m,m,m),m,m,m)
 l=t.p
-r=A.a([r,B.cW,A.q("\u0421\u043a\u0438\u0434\u043a\u0430 \u043d\u0430 \u043f\u0435\u0440\u0432\u0443\u044e \u043a\u043e\u043d\u0441\u0443\u043b\u044c\u0442\u0430\u0446\u0438\u044e 20%",m,m,m,m,A.B(m,m,m,m,m,m,m,m,m,m,m,20,m,m,m,m,m,!0,m,m,m,m,m,m,m,m),m,m,m)],l)
+r=A.a([r,B.cW,A.q("",m,m,m,m,A.B(m,m,m,m,m,m,m,m,m,m,m,20,m,m,m,m,m,!0,m,m,m,m,m,m,m,m),m,m,m)],l)
 if(A.wW())r.push(B.rz)
 if(A.wW())r.push(A.q("\u041d\u0443\u0436\u0435\u043d \u0432\u0440\u0430\u0447 \u043f\u0440\u044f\u043c\u043e \u0441\u0435\u0439\u0447\u0430\u0441?",m,m,m,m,A.B(m,m,m,m,m,m,m,m,m,m,m,30,m,m,m,m,m,!0,m,m,m,m,m,m,m,m),m,m,m))
 if(A.wW())r.push(B.bS)
