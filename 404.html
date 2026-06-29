@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Перенаправление...</title>
+  <script>
+    var pathSegments = window.location.pathname.split('/').filter(Boolean);
+    var path = '/' + pathSegments.join('/');
+    sessionStorage.setItem('redirect_path', path);
+    var baseHref = document.querySelector('base')?.href || '/';
+    window.location.replace(baseHref + 'index.html');
+  </script>
+</head>
+<body>
+  <p>Перенаправление на главную страницу...</p>
+</body>
+</html>

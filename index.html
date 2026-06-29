@@ -104,6 +104,13 @@
     observer.observe(document.body, { childList: true, subtree: true });
   </script>
   <script>
+    var redirectPath = sessionStorage.getItem('redirect_path');
+    if (redirectPath && redirectPath !== '/' && redirectPath !== '/index.html') {
+      sessionStorage.removeItem('redirect_path');
+      window.history.replaceState(null, '', redirectPath);
+    }
+  </script>
+  <script>
     if ('serviceWorker' in navigator) {
       navigator.serviceWorker.register('/firebase-messaging-sw.js')
         .then(function (registration) {
