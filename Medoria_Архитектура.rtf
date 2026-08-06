@@ -1,0 +1,34 @@
+{\rtf1\ansi\deff0{\fonttbl{\f0 Arial;}}\f0\fs22 {\b\fs28 Архитектура Medoria — онбординг}\parДата: 01.06.2026\par\par{\b\fs28 1. Общая схема}\par
+Платформа Medoria — телемедицина: веб-порталы, мобильные клиенты (Flutter), видеоконсультации, протоколы, почта, Redmine.
+
+Сервер приложений: 109.73.201.4 (SSH: server109)
+Сервер БД: 46.149.69.33 (PostgreSQL, порт 5432)
+GitLab: gitlab.com/medoria и gitlab.com/grpc9032312
+GitHub: уточнить у команды (на prod не используется напрямую)
+\par{\b\fs28 2. Домены}\par
+connect.medoria.ru — основной PHP-портал
+partner.medoria.ru — партнёрский кабинет
+rt.medoria.ru/ws — WebSocket (зал ожидания)
+mediaserver.medoria.ru — LiveKit (видео)
+medoriawebapi.twc1.net — .NET API
+redmine.medoria.ru — задачи
+mail.connect.medoria.ru — почта
+\par{\b\fs28 3. Видеозвонок}\par
+1. PHP на connect создаёт токен LiveKit
+2. Пациент: WebSocket rt.medoria.ru
+3. Медиа: mediaserver.medoria.ru (WebRTC UDP 50000-53000)
+4. Запись: livekitegress
+Конфиг: /var/www/livekit/livekit.yaml, node_ip 109.73.201.4
+\par{\b\fs28 4. GitLab Registry}\par
+registry.gitlab.com/medoria/cron_push_grpc_dart:latest
+registry.gitlab.com/medoria/cron_status_grpc_dart:latest
+registry.gitlab.com/grpc9032312/server-grpc:latest
+registry.gitlab.com/grpc9032312/web-socket-dart:latest
+
+Обновление: docker compose pull && docker compose up -d в /var/dart/www/...
+\par{\b\fs28 5. Базы данных}\par
+PostgreSQL 46.149.69.33 — основные данные (medoria, medoria_test, redmine)
+MSSQL на 109.73.201.4 — только для medwebapi2 (порт 1435)
+\par{\b\fs28 6. Безопасность}\par
+Пароли в этот документ не включены. Не публикуйте /var/www/Makefile с учётными данными.
+\par}
