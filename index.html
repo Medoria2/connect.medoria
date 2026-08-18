@@ -111,16 +111,54 @@
     }
   </script>
   <script>
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('/firebase-messaging-sw.js')
-        .then(function (registration) {
-          console.log('Service Worker registration successful with scope: ', registration.scope);
-        }).catch(function (err) {
-          console.log('Service Worker registration failed: ', err);
-        });
-    }
+    (function () {
+      if (!('serviceWorker' in navigator)) {
+        return;
+      }
+
+      var nativeRegister = navigator.serviceWorker.register.bind(navigator.serviceWorker);
+      navigator.serviceWorker.register = function (url, options) {
+        if (String(url).indexOf('flutter_service_worker.js') !== -1) {
+          return Promise.reject(new Error('Flutter service worker is disabled on this host'));
+        }
+        return nativeRegister(url, options);
+      };
+
+      navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        return Promise.all(registrations.map(function (registration) {
+          var scriptUrl = (registration.active && registration.active.scriptURL)
+            || (registration.waiting && registration.waiting.scriptURL)
+            || (registration.installing && registration.installing.scriptURL)
+            || '';
+          if (scriptUrl.indexOf('flutter_service_worker.js') !== -1) {
+            return registration.unregister();
+          }
+          return Promise.resolve();
+        }));
+      }).then(function () {
+        return nativeRegister('/firebase-messaging-sw.js');
+      }).then(function (registration) {
+        console.log('Service Worker registration successful with scope: ', registration.scope);
+      }).catch(function (err) {
+        console.log('Service Worker registration failed: ', err);
+      });
+    })();
   </script>
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    (function loadFlutterBootstrap(attempt) {
+      var script = document.createElement('script');
+      script.src = 'flutter_bootstrap.js';
+      script.async = true;
+      script.onerror = function () {
+        if (attempt < 3) {
+          setTimeout(function () {
+            loadFlutterBootstrap(attempt + 1);
+          }, attempt * 1000);
+        }
+      };
+      document.body.appendChild(script);
+    })(1);
+  </script>
 </body>
 
 </html>
